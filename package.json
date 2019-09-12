@@ -5,12 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "dev": "nodemon index"
+    "server": "nodemon index",
+    "client": "npm start --prefix palindrome-client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Gio",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "axios": "^0.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.2"

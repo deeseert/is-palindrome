@@ -1,18 +1,20 @@
 const express = require('express');
 const router = express.Router();
 
-const isPalindrome = require('./../api/../api/palindromes');
+const isPalindrome = require('../../controllers/isPalindrome/isPalindrome.js');
 
 // Post Palindrome
 router.post('/', (req, res) => {
-  const str = req.body.name;
+  const str = 'annaa';
+  // req.body.name;
   if (
     str
     // palindromeDatabase._list.length < 10 &&
     // palindromeChecker(str) &&
     // isNotEmpty(str)
   ) {
-    isPalindrome(str);
+    const test = isPalindrome(str);
+    res.send(test);
   } else {
     res.status(400).json({ msg: 'something is wrong with you!' });
   }
