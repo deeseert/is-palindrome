@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import GetPalindrome from './components/layout/GetPalindromes';
+import GetPalindrome from './components/GetPalindromes';
 import PostPalindrome from './components/layout/PostPalindrome';
 import LandingPage from './components/layout/LandingPage';
 import './App.css';
