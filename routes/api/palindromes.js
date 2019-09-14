@@ -5,8 +5,7 @@ const isPalindrome = require('../../controllers/isPalindrome/isPalindrome.js');
 
 // Post Palindrome
 router.post('/', (req, res) => {
-  const str = 'annaa';
-  // req.body.name;
+  const str = req.body.name;
   if (
     str
     // palindromeDatabase._list.length < 10 &&
@@ -14,7 +13,7 @@ router.post('/', (req, res) => {
     // isNotEmpty(str)
   ) {
     const test = isPalindrome(str);
-    res.send(test);
+    res.json({ test });
   } else {
     res.status(400).json({ msg: 'something is wrong with you!' });
   }

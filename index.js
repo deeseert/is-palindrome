@@ -12,6 +12,7 @@ app.use(cors(corsOptions));
 
 // Initialise Middleware - This allows me to access req.body in order to add and send data to create a user or a post, etc
 // app.use(express.json({ extended: false }));
+app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.send('API Running!'));
 
