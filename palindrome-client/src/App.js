@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import GetPalindrome from './components/GetPalindromes';
-import PostPalindrome from './components/layout/PostPalindrome';
+import PostPalindrome from './components/PostPalindrome';
 import LandingPage from './components/layout/LandingPage';
 import './App.css';
 

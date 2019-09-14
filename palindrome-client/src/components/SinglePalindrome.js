@@ -1,25 +1,29 @@
 import React from 'react';
+import Table from 'react-bootstrap/Table';
 
-const SinglePalindrome = (props) => {
+const SinglePalindrome = ({ message, index }) => {
+  console.log('message from child: ', message);
   return (
-    <div className="post">
-      <table style="width:100%">
-        <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Age</th>
-        </tr>
-        <tr>
-          <td>Jill</td>
-          <td>Smith</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>Eve</td>
-          <td>Jackson</td>
-          <td>94</td>
-        </tr>
-      </table>
+    <div>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            {/* <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th> */}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{index}</td>
+            <td>{message.text}</td>
+            <td>
+              {message.isPalindrome ? 'It is palindrome :)' : 'It is NOT palindrome :('}
+            </td>
+          </tr>
+        </tbody>
+      </Table>
       {/* <h2>{post.title}</h2>
       <p>{post.body}</p>
       <button onClick={() => deletePost(post)}>Delete</button> */}
