@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+
 class PostPalindrome extends Component {
   state = {
     name: '',
@@ -13,20 +14,23 @@ class PostPalindrome extends Component {
     }
   };
 
-  postPalindromeAPI = () => {
-    const URL = 'http://localhost:5000/api/palindromes/';
+  postPalindromeAPI = async () => {
+    const URL = 'http://localhost:5000/palindromes/';
     const { name } = this.state;
     const obj = { name };
-    fetch(URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(obj),
-    })
-      .then((resp) => resp.json())
-      .then((data) => this.palindromeAlert(data))
-      .catch((error) => {
-        console.log(error);
+
+    try {
+      const response = await fetch(URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(obj),
       });
+
+      const data = await response.json();
+      this.palindromeAlert(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   onSubmit = async (event) => {
@@ -37,12 +41,10 @@ class PostPalindrome extends Component {
     } catch (err) {
       console.log(err);
     }
-    console.log('Submitted');
   };
 
   onChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
-    console.log('Changed');
   };
   render() {
     const { name } = this.state;
@@ -50,12 +52,15 @@ class PostPalindrome extends Component {
     return (
       <Fragment>
         <h1 className="large text-primary">Check if it is palindrome</h1>
-        <p className="my-1">Palindrome is when the word does not change...</p>
+        <p className="my-1">
+          Palindrome is a word, phrase, or sequence that reads the same backwards as
+          forwards
+        </p>
         <form className="form" onSubmit={(event, name) => this.onSubmit(event, name)}>
           <div className="form-group">
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Type your text here..."
               name="name"
               value={name}
               onChange={(event) => this.onChange(event)}
@@ -63,14 +68,9 @@ class PostPalindrome extends Component {
             />
           </div>
           <input type="submit" className="btn btn-primary" value="Check" />
-          <div>
-            <br />
-            <div style={{ display: 'flex' }}>
-              <Link to="/get">
-                <button className="btn btn-secondary">See all palindromes</button>
-              </Link>
-            </div>
-          </div>
+          <Link to="/get">
+            <button className="btn btn-secondary">See all palindromes</button>
+          </Link>
         </form>
       </Fragment>
     );

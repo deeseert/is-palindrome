@@ -15,22 +15,13 @@ var corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// Read from local database
-fs.readFile('database/myDatabase.txt', 'utf8', (err, data) => {
-  try {
-    const newData = JSON.parse(data); // CHANGED HERE
-    console.log('this is newData: ', newData);
-  } catch (err) {}
-});
-
-// Initialise Middleware - This allows me to access req.body in order to add and send data to create a user or a post, etc
-// app.use(express.json({ extended: false }));
+// Initialise Middleware - This allows to access req.body
 app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.send('API Running!'));
 
 // Routes
-app.use('/api/palindromes', require('./routes/api/palindromes'));
+app.use('/palindromes', require('./routes/api/palindromes'));
 
 const PORT = process.env.PORT || 5000;
 

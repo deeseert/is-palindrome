@@ -11,17 +11,4 @@ const isPalindrome = (string) => {
   return true;
 };
 
-// function isPalindrome(text) {
-//     if (!text) {
-//         return false;
-//     }
-
-//     text = text.replace(/[^\w]/g, ""); //remove all characters except a-z
-//     text = text.toLowerCase();
-//     if (text.length === 0) {
-//         return false;
-//     }
-
-//     return text == text.split('').reverse().join('');
-// }
 exports.isPalindrome = isPalindrome;
